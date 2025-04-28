@@ -10,10 +10,10 @@ from shop.models import Product, ProductCategory, ProductImage, ProductReview, B
 
 class HomePageView(ListView):
     model = Product
-    template_name = 'base.html'
+    template_name = 'shop/index.html'
     context_object_name = 'products'
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs):   
         context = super().get_context_data(**kwargs)
         context['categories'] = ProductCategory.objects.all()
         context['expensive_products'] = Product.objects.all().order_by('-price')[0:8]  # eng qimmat mahsulotlar
